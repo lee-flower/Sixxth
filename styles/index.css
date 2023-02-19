@@ -3,3 +3,23 @@
 #paint-area {
   display: none;
 }
+
+#image-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-box {
+  border: 1px solid #8884;
+  padding: 8px;
+  border-radius: 1%;
+  box-shadow: 2px 5px 5px #ccc;
+  filter: drop-shadow(16px 16px 20px #d9d9d9) invert(4%);
+  transform: matrix(0.6, 0, 0, 0.6, 2, 3);
+}
+
+/* #class-sixxth {
+  filter: hue-rotate(90deg);
+} */

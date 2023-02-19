@@ -19,27 +19,8 @@ const painting = (_ev) => {
   paint.canvas.height = root.clientHeight;
   paint.drawImage(classImage, 0, 0, root.clientWidth, root.clientHeight);
 
-  // 将在canvas中绘制好的图像转换成 Blob 对象并写入 img 标签 src 属性
-  paint.canvas.toBlob(
-    (blob) => {
-      let img_url = URL.createObjectURL(blob),
-        self = { url: img_url },
-        img_display = document.getElementById("class-sixxth");
-
-      img_display.alt = "class image";
-
-      img_display.width = root.clientWidth - 4;
-      img_display.height = root.clientHeight - 4;
-
-      img_display.addEventListener("load", (_ev) => {
-        URL.revokeObjectURL(self.img_url);
-      });
-
-      img_display.src = img_url;
-    },
-    "image/png",
-    1
-  );
+  let img_data = paint.canvas.toDataURL("image/png", 1);
+  document.getElementById("class-sixxth").src = img_data;
 };
 
 addEventListener("load", inloading);
