@@ -1,27 +1,21 @@
-const classImage = new Image();
-const headSculpture = new Image();
+import contants from "./contants.js";
+import { loadImages, drawImages, randomRotate } from "./utils.js";
 
-classImage.src = "./images/classSixxth2.png";
-// headSculpture.src = "./images/leeflower.png";
+function loading(_ev) {
+  const paint_brush = document.getElementById("paint").getContext("2d");
+  const img_elements = document.querySelectorAll(".img-box img");
+  const boxes = document.getElementsByClassName("img-box");
 
-let paint, root;
+  paint_brush.canvas.width = 240;
+  paint_brush.canvas.height = 160;
+  loadImages(contants.IMAGE_DATA_PATH, (data) => {
+    for (let i = 0; i < data.length; i++) {
+      drawImages(paint_brush, data[i], img_elements[i]);
+    }
+  });
+  for (let element of boxes) {
+    randomRotate(element);
+  }
+}
 
-const inloading = (_ev) => {
-  paint = document
-    .getElementById("paint-area")
-    .getContext("2d", { alpha: true });
-  root = document.getElementById("root");
-  painting(_ev);
-};
-
-const painting = (_ev) => {
-  paint.canvas.width = root.clientWidth;
-  paint.canvas.height = root.clientHeight;
-  paint.drawImage(classImage, 0, 0, root.clientWidth, root.clientHeight);
-
-  let img_data = paint.canvas.toDataURL("image/png", 1);
-  document.getElementById("class-sixxth").src = img_data;
-};
-
-addEventListener("load", inloading);
-addEventListener("resize", painting);
+addEventListener("load", loading);
