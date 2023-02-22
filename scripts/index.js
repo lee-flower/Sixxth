@@ -6,16 +6,13 @@ function loading(_ev) {
   const img_elements = document.querySelectorAll(".img-box img");
   const boxes = document.getElementsByClassName("img-box");
 
-  paint_brush.canvas.width = 240;
-  paint_brush.canvas.height = 160;
+  paint_brush.canvas.width = 480;
+  paint_brush.canvas.height = 320;
   loadImages(contants.IMAGE_DATA_PATH, (data) => {
     for (let i = 0; i < data.length; i++) {
       drawImages(paint_brush, data[i], img_elements[i]);
     }
   });
-  for (let element of boxes) {
-    randomRotate(element);
-  }
 }
 
 addEventListener("load", loading);

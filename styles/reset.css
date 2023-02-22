@@ -16,3 +16,7 @@ html, body {
 img {
   overflow: visible;
 }
+
+p {
+  display: inline-block;
+}
